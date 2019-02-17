@@ -61,5 +61,8 @@ namespace lab3
             return this.trains;
         }
 
+        //TBD
+        public void print() { }
+
     }
 }
