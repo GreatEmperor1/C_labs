@@ -49,6 +49,11 @@ namespace lab3
             this.trainName = name;
         }
 
+        public String getTrainName()
+        {
+            return this.trainName;
+        }
+
         public void setTrainCarriages(CCarriage[] carriages)
         {
             this.trainCarriages = carriages;

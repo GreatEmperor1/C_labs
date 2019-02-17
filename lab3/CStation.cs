@@ -62,7 +62,17 @@ namespace lab3
         }
 
         //TBD
-        public void print() { }
+        public void print()
+        {
+            foreach (CTrain train in this.trains)
+            {
+                Console.WriteLine("Train: " + train.getTrainNumber() + " " + train.getTrainName());
+                foreach (CCarriage carriage in train.getTrainCarriages())
+                {
+                    Console.WriteLine("Carriage: " + carriage.getNumber() + " " + carriage.getType());
+                }
+            }
+        }
 
     }
 }
