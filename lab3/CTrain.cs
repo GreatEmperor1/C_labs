@@ -17,6 +17,7 @@ namespace lab3
         {
             this.trainNumber = 0;
             this.trainName = "DEFAULT_NAME";
+            trainCarriages = new CCarriage[2];
         }
 
         public CTrain(int number, String name)

@@ -20,7 +20,8 @@ namespace lab3
 
         public CStation(String name, String city)
         {
-
+            this.name = name;
+            this.city = city;
         }
 
         public CStation(String name, String city, CTrain[] trains)
