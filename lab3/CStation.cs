@@ -62,16 +62,18 @@ namespace lab3
             return this.trains;
         }
 
-        //TBD
+        //print out
         public void print()
         {
             foreach (CTrain train in this.trains)
             {
+                Console.WriteLine("****************************************************");
                 Console.WriteLine("Train: " + train.getTrainNumber() + " " + train.getTrainName());
                 foreach (CCarriage carriage in train.getTrainCarriages())
                 {
-                    Console.WriteLine("Carriage: " + carriage.getNumber() + " " + carriage.getType());
+                    Console.WriteLine("Carriage: " + carriage.getNumber() + " " + carriage.getType() + " " + carriage.getCCaro().getCargoName() + " " + carriage.getCCaro().getCargoType());
                 }
+                Console.WriteLine("****************************************************");
             }
         }
 

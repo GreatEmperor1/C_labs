@@ -17,7 +17,11 @@ namespace lab3
         {
             this.trainNumber = 0;
             this.trainName = "DEFAULT_NAME";
-            trainCarriages = new CCarriage[2];
+            CCarriage carriage3 = new CCarriage(3, "For food");
+            CCargo cargo3 = new CCargo("Food", "Cargo with food");
+            carriage3.setCargo(cargo3);
+            cargo3.setCargoCarriage(carriage3);
+            this.trainCarriages = new CCarriage[1] {carriage3};  //КОМПОЗИЦИЯ
         }
 
         public CTrain(int number, String name)

@@ -10,26 +10,42 @@ namespace lab3
     {
         static void Main(string[] args)
         {
+            //грузы
             CCargo cargo1 = new CCargo("Machinegun","light");
             CCargo cargo2 = new CCargo("Tank","Heavy");
 
+            //вагоны
             CCarriage carriage1 = new CCarriage(1, "For light cargo");
             CCarriage carriage2 = new CCarriage(2, "For heavy cargo");
-            CCarriage carriage3 = new CCarriage(3, "For food");
 
+            cargo1.setCargoCarriage(carriage1);
+            carriage1.setCargo(cargo1);
+            cargo2.setCargoCarriage(carriage2);
+            carriage2.setCargo(cargo2);
+
+            //массив вагонов 1 + поезд1
             CCarriage[] carriagesHeavy = new CCarriage[2];
             carriagesHeavy[0] = carriage2;
             carriagesHeavy[1] = carriage2;
+            CTrain train1 = new CTrain(1, "MINSK-MOSCOV", carriagesHeavy);
 
-            CTrain train1 = new CTrain();
-            CTrain train2 = new CTrain(1, "МИНСК-ЮРМАЛА");
-            CTrain train3 = new CTrain(2, "MINSK-MOSCOV", carriagesHeavy);
+            //массив вагонов 2 + поезд 2
+            CCarriage[] carriagesLight = new CCarriage[3];
+            carriagesLight[0] = carriage1;
+            carriagesLight[1] = carriage1;
+            carriagesLight[2] = carriage1;
+            CTrain train2 = new CTrain(2, "МИНСК-ЮРМАЛА", carriagesLight);
 
+            //композиция(массив вагонов trainCarriages создаётся при создании поезда)
+            CTrain train3 = new CTrain();
+            
+            
+            //массив поездов, для станции
             CTrain[] trains = new CTrain[3];
             trains[0] = train1;
             trains[1] = train2;
             trains[2] = train3;
-
+            //станция
             CStation station = new CStation("Station1", "Minsk", trains);
 
             station.print();
@@ -37,4 +53,4 @@ namespace lab3
 
         }
     }
-}
+}  
