@@ -13,7 +13,7 @@ namespace lab4
             Software app1 = new Game("Disciples III", "C#", 64, "hardware1", "Windows");
             Software app2 = new Antivirus("ESET NOD32", "java", 64, "PC protection", true);
             Software app3 = new MyApplication("PLEX Mobile", "java", 64, "Enterprise", false);
-
+            
             Software[] applications = new Software[3];
             applications[0] = app1;
             applications[1] = app2;
@@ -49,6 +49,17 @@ namespace lab4
                     ((MyApplication)app).method2();
                 }
             }
+            Console.WriteLine("*********************************************************");
+            ((Antivirus)app2).method1();
+            ((Antivirus)app2).method2();
+            ((Antivirus)app3).method1();
+            ((Antivirus)app3).method2();
+            //Antivirus app4 = new Antivirus("ESET NOD32", "java", 64, "PC protection", true);
+            //MyApplication app5 = new MyApplication("PLEX Mobile", "java", 64, "Enterprise", false);
+            //app4.method1();
+            //app4.method2();
+            //app5.method1();
+            //app5.method2();
 
         }
     }

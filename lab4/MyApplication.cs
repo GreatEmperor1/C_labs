@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab4
 {
+    //When applied to a class, the sealed modifier prevents other classes from inheriting from it. 
     public sealed class MyApplication : Antivirus
     {
 
@@ -35,7 +36,7 @@ namespace lab4
 
         //вызов метода родительского класса при его скрытии
         //new скрывае method2() из Antivirus
-        new public void method2()
+        public new void method2()
         {
             Console.WriteLine("This is MyApplication method2");
         }
