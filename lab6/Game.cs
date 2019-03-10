@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab5
+namespace lab6
 {
     class Game : Software, DecreaseCost
     {
@@ -63,6 +63,25 @@ namespace lab5
         public override String ToString()
         {
             return ("This is Game \n" + "Name " + this.name + '\n' + "Bugs " + this.bugs + '\n' + "Cost " + this.cost + '\n' + "License Agreement " + this.licenseAgreement).ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Software)
+            {
+                if (this.name.Equals(((Software)obj).getName()))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

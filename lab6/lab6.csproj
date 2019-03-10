@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C86D652-AF87-4FF1-86F3-EA17B1CB6B4B}</ProjectGuid>
+    <ProjectGuid>{CBC302BA-4C0F-4094-A6B1-607C2A31A995}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lab5</RootNamespace>
-    <AssemblyName>lab5</AssemblyName>
+    <RootNamespace>lab6</RootNamespace>
+    <AssemblyName>lab6</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,19 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Antivirus.cs" />
+    <Compile Include="DecreaseCost.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IncreaseCost.cs" />
-    <Compile Include="DecreaseCost.cs" />
-    <Compile Include="Antivirus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Software.cs" />
-    <Compile Include="SoftwareCostComparer.cs" />
-    <Compile Include="SoftwareNameComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
