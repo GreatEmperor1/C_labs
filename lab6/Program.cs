@@ -66,6 +66,7 @@ namespace lab6
 
                 switch (flag)
                 {
+                    //просмотр коллекции
                     case (1):
                         {
                             Console.Clear();
@@ -87,6 +88,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //добавление элемента
                     case (2):
                         {
                             Console.Clear();
@@ -118,6 +120,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //добавление элемента по указанному индексу
                     case (3):
                         {
                             Console.Clear();
@@ -157,6 +160,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //нахождение элемента с начала коллекции
                     case (4):
                         {
                             Console.Clear();
@@ -194,6 +198,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //нахождение элемента с конца коллекции
                     case (5):
                         {
                             Console.Clear();
@@ -232,6 +237,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //удаление элемента по индексу
                     case (6):
                         {
                             Console.Clear();
@@ -252,6 +258,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //удаление элемента по значению
                     case (7):
                         {
                             Console.Clear();
@@ -279,6 +286,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //реверс коллекции
                     case (8):
                         {
                             Console.Clear();
@@ -290,6 +298,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //сортировка
                     case (9):
                         {
                             Console.Clear();
@@ -301,6 +310,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //выполнение методов всех объектов, поддерживающих Interface2
                     case (10):
                         {
                             Console.Clear();
@@ -324,7 +334,7 @@ namespace lab6
                         }
 
 
-
+                    //LinkedList просмотр коллекции
                     case (11):
                         {
                             Console.Clear();
@@ -346,6 +356,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList добавление элемента
                     case (12):
                         {
                             Console.Clear();
@@ -377,6 +388,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList добавление элемента по указанному индексу
                     case (13):
                         {
                             Console.Clear();
@@ -418,6 +430,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList нахождение элемента с начала коллекции
                     case (14):
                         {
                             Console.Clear();
@@ -458,6 +471,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList нахождение элемента с конца коллекции
                     case (15):
                         {
                             Console.Clear();
@@ -498,6 +512,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList удаление элемента по индексу
                     case (16):
                         {
                             Console.Clear();
@@ -518,6 +533,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList удаление элемента по значению
                     case (17):
                         {
                             Console.Clear();
@@ -548,6 +564,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList реверс коллекции
                     case (18):
                         {
                             Console.Clear();
@@ -565,6 +582,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //LinkedList сортировка
                     case (19):
                         {
                             Console.Clear();
@@ -588,6 +606,7 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+                    //выполнение методов всех объектов, поддерживающих Interface2
                     case (20):
                         {
                             Console.Clear();
