@@ -9,6 +9,7 @@ namespace lab6
     class Program
     {
         private static System.Collections.ArrayList list1 = new System.Collections.ArrayList();
+        private static System.Collections.Generic.LinkedList<IncreaseCost> list2 = new LinkedList<IncreaseCost>();
 
         static void Main(string[] args)
         {
@@ -25,6 +26,11 @@ namespace lab6
             applications[3] = app3;
 
             list1.AddRange(applications);
+
+            list2.AddFirst(app0);
+            list2.AddAfter(list2.First,app1);
+            list2.AddLast(app2);
+            list2.AddAfter(list2.Last,app3);
 
             //list1.Add(new Game("Heroes3", 15, 200, "No license"));
 
@@ -98,13 +104,13 @@ namespace lab6
                             if (licenseAgreement.Equals("0"))
                             {
                                 list1.Add(new Software(name, bugs, cost));
-                                Console.WriteLine("УсЁ");
+                                Console.WriteLine("Done");
                                 Console.WriteLine("создали Software");
                             }
                             else
                             {
                                 list1.Add(new Game(name, bugs, cost, licenseAgreement));
-                                Console.WriteLine("УсЁ");
+                                Console.WriteLine("Done");
                                 Console.WriteLine("создали Game");
                             }
                             Console.WriteLine("И добавили в list1");
@@ -132,13 +138,13 @@ namespace lab6
                                 if (licenseAgreement.Equals("0"))
                                 {
                                     list1.Insert(index, new Software(name, bugs, cost));
-                                    Console.WriteLine("УсЁ");
+                                    Console.WriteLine("Done");
                                     Console.WriteLine("создали Software");
                                 }
                                 else
                                 {
                                     list1.Insert(index, new Game(name, bugs, cost, licenseAgreement));
-                                    Console.WriteLine("УсЁ");
+                                    Console.WriteLine("Done");
                                     Console.WriteLine("создали Game");
                                 }
                                 Console.WriteLine("И добавили в list1");
@@ -316,6 +322,296 @@ namespace lab6
                             Console.ReadLine();
                             break;
                         }
+
+
+
+                    case (11):
+                        {
+                            Console.Clear();
+
+                            if (Program.list2.Count > 0)
+                            {
+                                Console.WriteLine("list2 содержит : " + list2.Count);
+                                foreach (Object obj in Program.list2)
+                                {
+                                    Console.WriteLine("************************************************************");
+                                    Console.WriteLine(obj.ToString());
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("list2 пустой");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (12):
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Теперь создаем обьект");
+                            Console.WriteLine("Введите name");
+                            String name = Console.ReadLine();
+                            Console.WriteLine("Введите bugs");
+                            int bugs = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Введите cost");
+                            double cost = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Введите licenseAgreement");
+                            String licenseAgreement = Console.ReadLine();
+
+                            if (licenseAgreement.Equals("0"))
+                            {
+                                list2.AddFirst(new Software(name, bugs, cost));
+                                Console.WriteLine("Done");
+                                Console.WriteLine("создали Software");
+                            }
+                            else
+                            {
+                                list2.AddFirst(new Game(name, bugs, cost, licenseAgreement));
+                                Console.WriteLine("Done");
+                                Console.WriteLine("создали Game");
+                            }
+                            Console.WriteLine("И добавили в list2");
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (13):
+                        {
+                            Console.Clear();
+                            try
+                            {
+                                Console.WriteLine("Теперь создаем обьект");
+                                Console.WriteLine("Введите name");
+                                String name = Console.ReadLine();
+                                Console.WriteLine("Введите bugs");
+                                int bugs = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Введите cost");
+                                double cost = Convert.ToDouble(Console.ReadLine());
+                                Console.WriteLine("Введите licenseAgreement");
+                                String licenseAgreement = Console.ReadLine();
+                                Console.WriteLine("Введите index обьекта после котрого вставим этот");
+                                int index = Convert.ToInt32(Console.ReadLine());
+                                IncreaseCost obj = list2.ElementAt(index);
+
+
+                                if (licenseAgreement.Equals("0"))
+                                {
+                                    list2.AddAfter(list2.Find(obj), new Software(name, bugs, cost));
+                                    Console.WriteLine("Done");
+                                    Console.WriteLine("создали Software");
+                                }
+                                else
+                                {
+                                    list2.AddAfter(list2.Find(obj), new Game(name, bugs, cost, licenseAgreement));
+                                    Console.WriteLine("Done");
+                                    Console.WriteLine("создали Game");
+                                }
+                                Console.WriteLine("И добавили в list2");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Не могу выполнить");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (14):
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Находим элемент по имени name с начала");
+                            Console.WriteLine("Введите name");
+                            String name = Console.ReadLine();
+                            Software finding = null;
+
+                            LinkedListNode<IncreaseCost> node = list2.First;
+                            for (int i = 0; i < list2.Count; i++)
+                            {
+                                IncreaseCost obj = node.Value;
+                                if (name.Equals(((Software)obj).getName()))
+                                {
+                                    finding = (Software)obj;
+                                }
+                                node = node.Next;
+                            }
+
+                            if (finding != null)
+                            {
+                                Console.WriteLine("Нашел");
+                                if (finding is Game)
+                                {
+                                    Console.WriteLine(((Game)finding).ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine(((Software)finding).ToString());
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Не нашел");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (15):
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Находим элемент по имени name с начала");
+                            Console.WriteLine("Введите name");
+                            String name = Console.ReadLine();
+                            Software finding = null;
+
+                            LinkedListNode<IncreaseCost> node = list2.Last;
+                            for (int i = 0; i < list2.Count; i++)
+                            {
+                                IncreaseCost obj = node.Value;
+                                if (name.Equals(((Software)obj).getName()))
+                                {
+                                    finding = (Software)obj;
+                                }
+                                node = node.Previous;
+                            }
+
+                            if (finding != null)
+                            {
+                                Console.WriteLine("Нашел");
+                                if (finding is Game)
+                                {
+                                    Console.WriteLine(((Game)finding).ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine(((Software)finding).ToString());
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Не нашел");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (16):
+                        {
+                            Console.Clear();
+
+                            try
+                            {
+                                Console.WriteLine("Удалим элемент по индексу");
+                                Console.WriteLine("Введите индекс");
+                                int index = Convert.ToInt32(Console.ReadLine());
+                                list2.Remove(list2.ElementAt(index));
+                                Console.WriteLine("Эх жаль элемента");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Че-то пошло не так :)");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (17):
+                        {
+                            Console.Clear();
+
+                            try
+                            {
+                                Console.WriteLine("Удалим элемент по значению");
+                                Console.WriteLine("Введите name");
+                                String name = Console.ReadLine();
+                                LinkedListNode<IncreaseCost> node = list2.First;
+                                for (int i = 0; i < list2.Count; i++)
+                                {
+                                    IncreaseCost obj = node.Value;
+                                    if (name.Equals(((Software)obj).getName()))
+                                    {
+                                        list2.Remove(obj);
+                                        Console.WriteLine("Эх жаль элемента");
+                                        break;
+                                    }
+                                    node = node.Next;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Че-то пошло не так :)");
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (18):
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Произведем реверс list2");
+                            IncreaseCost[] array = list2.ToArray();
+                            LinkedList<IncreaseCost> list3 = new LinkedList<IncreaseCost>();
+                            foreach (IncreaseCost obj in list2)
+                            {
+                                list3.AddFirst(obj);
+                            }
+                            list2 = list3;
+                            Console.WriteLine("Готово :)");
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (19):
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("Отсортируем по name list2");
+                            IncreaseCost[] array = new IncreaseCost[list2.Count];
+                            int i = 0;
+                            foreach (IncreaseCost obj in list2)
+                            {
+                                array[i] = obj;
+                                i++;
+                            }
+                            Array.Sort(array);
+                            list2.Clear();
+                            for (int q = 0; q < array.Length; q++)
+                            {
+                                list2.AddLast(array[q]);
+                            }
+                            Console.WriteLine("Готово )");
+
+                            Console.ReadLine();
+                            break;
+                        }
+                    case (20):
+                        {
+                            Console.Clear();
+
+                            foreach (IncreaseCost obj in list2)
+                            {
+                                if (obj is DecreaseCost)
+                                {
+                                    Console.WriteLine("Ура");
+                                    Console.WriteLine("************************************************************");
+                                    ((DecreaseCost)obj).decreaseCost();
+                                    ((DecreaseCost)obj).information();
+                                    ((DecreaseCost)obj).statistic();
+                                    ((DecreaseCost)obj).info();
+                                }
+                            }
+
+                            Console.ReadLine();
+                            break;
+                        }
+
+
+
+
                     case (0):
                         {
                             Console.Clear();
