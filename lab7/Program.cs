@@ -15,7 +15,10 @@ namespace lab7
         }
         static void f2(DirectoryInfo d)
         {// вывод списка всех каталогов в текущем (пронумерованный)
-            Console.WriteLine("Root: {0}", d.EnumerateDirectories(d));
+            foreach (var item in d.GetDirectories())
+            {
+                Console.WriteLine(item.Name);
+            }
         }
         static void f3(DirectoryInfo d)
         {// вывод списка всех файлов в текущем каталоге (пронумерованнный)
