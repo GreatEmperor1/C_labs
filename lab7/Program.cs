@@ -15,14 +15,21 @@ namespace lab7
         }
         static void f2(DirectoryInfo d)
         {// вывод списка всех каталогов в текущем (пронумерованный)
+            int count = 0;
             foreach (var item in d.GetDirectories())
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine(count + " - " + item.Name);
+                count++;
             }
         }
         static void f3(DirectoryInfo d)
         {// вывод списка всех файлов в текущем каталоге (пронумерованнный)
-
+            int count = 0;
+            foreach (var item in d.GetFiles())
+            {
+                Console.WriteLine(count + " - " + item.Name);
+                count++;
+            }
         }
         static void f4(DirectoryInfo d)
         {// вывод на экран содержимого указанного файла (по номеру)
@@ -42,10 +49,23 @@ namespace lab7
         }
         static void f5(DirectoryInfo d)
         {// создание каталога в текущем
+            d.CreateSubdirectory("NewSub");
         }
         static void f6(DirectoryInfo d)
         {// удаление каталога по номеру, если он пустой
-
+            f2(d);
+            Console.WriteLine("Введите номер каталога:");
+            int index = Convert.ToInt32(Console.ReadLine());
+            DirectoryInfo[] directory = d.GetDirectories();
+            if (directory[index].GetFiles().Length == 0)
+            {
+                Console.WriteLine("Удаляем каталог!");
+                directory[index].Delete();
+            }
+            else
+            {
+                Console.WriteLine("Хмм... Каталог не пустой");
+            }
         }
         static void f7(DirectoryInfo d)
         {// удаление файлов с указанными номерами
