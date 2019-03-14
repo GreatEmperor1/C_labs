@@ -11,7 +11,8 @@ namespace lab7
     {
         static void f1(ref DirectoryInfo d)
         {// установить текущий диск/каталог
-            d = new DirectoryInfo(".");
+            Directory.SetCurrentDirectory(d.ToString());
+            Console.WriteLine(Directory.GetCurrentDirectory());
         }
         static void f2(DirectoryInfo d)
         {// вывод списка всех каталогов в текущем (пронумерованный)
@@ -21,6 +22,11 @@ namespace lab7
                 Console.WriteLine(count + " - " + item.Name);
                 count++;
             }
+
+            //foreach (var item in d.EnumerateDirectories())
+            //{
+            //    Console.WriteLine(item.Name);
+            //}
         }
         static void f3(DirectoryInfo d)
         {// вывод списка всех файлов в текущем каталоге (пронумерованнный)
@@ -87,7 +93,18 @@ namespace lab7
         }
         static void f8(DirectoryInfo d)
         {// вывод списка всех файлов с указанной датой создания (ищет в текущем каталоге и подкаталогах)
-
+            Console.WriteLine("Введите дату создания в формате D.M.Y :");
+            string desiredDate = Console.ReadLine();
+            string searchPattern = "*";
+            
+            FileInfo[] files = d.GetFiles(searchPattern, SearchOption.AllDirectories);
+            Console.WriteLine("Файлы созданные {0}", desiredDate + "\n");
+            foreach (FileInfo file in files)
+            {
+                if (file.CreationTime.Date.ToString() == desiredDate) { }
+                Console.WriteLine(file.Name + file.LastWriteTime);
+            }
+            Console.WriteLine();
         }
         static void f9(DirectoryInfo d)
         {// вывод списка всех текстовых файлов, в которых содержится указанный текст (ищет в текущем каталоге и подкаталогах)
@@ -111,7 +128,7 @@ namespace lab7
 
         static void Main(string[] args)
         {
-            DirectoryInfo dir = new DirectoryInfo(@"D:\");         // текущий каталог
+            DirectoryInfo dir = new DirectoryInfo(@"D:\TestDir");         // текущий каталог
             try
             {
                 while (true)
