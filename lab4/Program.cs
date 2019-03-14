@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,6 +62,58 @@ namespace lab4
             //app4.method2();
             //app5.method1();
             //app5.method2();
+            Console.WriteLine("7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/7.2/ \n");
+
+
+            Game g1 = new Game("Disciples III", "C#", 64, "hardware1", "Windows");
+            Console.WriteLine("Вывод только что созданной игры");
+            g1.printGame();
+            Console.WriteLine();
+
+            Game.SaveClass("game.txt");
+            Console.WriteLine("Сохранили информацию о классе");
+            Console.WriteLine();
+
+            g1.SaveObject("game1.bin");        // сохранили в файл информацию об объекте
+            Console.WriteLine("Сохранили информацию об объекте");
+            Console.WriteLine();
+
+            g1.setName("Heroes3");
+            g1.setBitRate(32);                       // изменили объект
+            Console.WriteLine("Изменили игру:");
+            g1.printGame();                  // вывели игру
+            Console.WriteLine();
+
+            g1 = Game.LoadObject("game1.bin"); // прочитали объект
+            Console.WriteLine("Прочитали сохраненное значение игры");
+            g1.printGame();                  // вывели игру
+            Console.WriteLine();
+
+            Stream fs = File.Open("game2.bin", FileMode.Create); //если нет файла - создаём
+            BinaryFormatter fmt = new BinaryFormatter();
+            fmt.Serialize(fs, g1);
+            fs.Close();
+            Console.WriteLine("Сериализовали игру");
+            Console.WriteLine();
+
+            g1.setName("King's Bounty");
+            g1.setBitRate(64);                       // изменили объект
+            Console.WriteLine("Изменили игру:");
+            g1.printGame();                  // вывели игру
+            Console.WriteLine();
+
+
+            fs = File.Open("game2.bin", FileMode.Open);
+            fmt = new BinaryFormatter();
+
+            g1 = (Game)fmt.Deserialize(fs);
+            fs.Close();
+            Console.WriteLine("Десериализовали игру:");
+            g1.printGame();                  // вывели игру
+
+
+
+
 
         }
     }

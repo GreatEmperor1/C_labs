@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace lab4
 {
+    [Serializable]
     public abstract class Software
     {
         protected String name;
@@ -65,6 +68,7 @@ namespace lab4
             return this.bitRate;
         }
 
+        
 
     }
 }
