@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace lab4
@@ -111,9 +112,54 @@ namespace lab4
             Console.WriteLine("Десериализовали игру:");
             g1.printGame();                  // вывели игру
 
+            //---------------------------------------------------------------------------------------
+            Console.WriteLine();
+            int n = 0;
+            Console.WriteLine("Enter string length: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter string:");
+            StringBuilder sb = new StringBuilder(Console.ReadLine(),n);
+            Console.WriteLine("Show entered string");
+            Console.WriteLine(sb);
+            Console.WriteLine();
+            Console.WriteLine("Enter char: ");
+            char ch;
+            ch = Convert.ToChar(Console.ReadLine());
+            for (int i = 0; i < sb.Length; i++)
 
+            {
+                if (sb[i] == ch)
+                {
+                    sb.Insert(i + 1, '*');
+                }
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Show changed string:");
+            Console.WriteLine(sb);
+            Console.WriteLine();
 
+            char ch2;
+            Console.WriteLine("Enter char to replace: ");
+            ch = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("Enter char to replace with: ");
+            ch2 = Convert.ToChar(Console.ReadLine());
+            for (int i = 0; i < sb.Length; i++)
+
+            {
+                if (sb[i] == ch)
+                {
+                    sb.Replace(ch, ch2);
+                }
+            }
+            Console.WriteLine("Show changed string:");
+            Console.WriteLine(sb);
+            Console.WriteLine();
+
+            Console.WriteLine("удалить все вхождения указанной подстроки");
+            string mystr = sb.ToString();
+            string replacedString = Regex.Replace(mystr, @"[we]", "");
+            Console.WriteLine(replacedString);
 
         }
     }

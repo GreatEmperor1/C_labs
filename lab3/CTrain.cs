@@ -8,9 +8,9 @@ namespace lab3
 {
     class CTrain
     {
-        public delegate void MethodContainer();
-        public event EventHandler onArrival;
-        public event Action onDeparture;
+        public delegate String MethodContainer();
+        public event EventHandler onArrival; //событие с параметрами
+        public event Action onDeparture;     //событие без параметров
         private int trainNumber;
         private String trainName;
         private CCarriage[] trainCarriages;
@@ -74,17 +74,23 @@ namespace lab3
 
         //-----------------------------------------------------------------------------------------------------------------------
 
-        public void TakeTime(DateTime now)
+        public void TakeTime(DateTime now) //во время работы этого метода будут вызываться события
         {
             if (now.Hour >= 8)
             {
-                onDeparture?.Invoke();
+                onDeparture?.Invoke(); //генерируем оповещение
             }
             else
             {
-                onArrival?.Invoke(this, null);
+                onArrival?.Invoke(this, null); //генерируем оповещение; вместо null можно передавать доп.параметры
             }
         }
 
+        public String trainInfo() //будем вызывать в анонимном делегате
+        {
+            return this.trainNumber.ToString() + " " + this.trainName;
+        }
+
+        
     }
 }

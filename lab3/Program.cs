@@ -8,6 +8,9 @@ namespace lab3
 {
     class Program
     {
+        delegate void MethodContainer(CTrain x);
+        delegate string MethodContainer2(CTrain x);
+
         static void Main(string[] args)
         {
             #region lab 3 execution
@@ -54,9 +57,21 @@ namespace lab3
 
             CTrain tr1 = new CTrain();
             tr1.onDeparture += Tr1_onDeparture; //подписываемся на событие
-            tr1.onArrival += Tr1_onArrival; //подписываемся на событие
-            tr1.TakeTime(DateTime.Parse("03.19.2019 06:30:00"));
-            tr1.TakeTime(DateTime.Parse("03.19.2019 08:30:00"));
+            tr1.onArrival += Tr1_onArrival;     //подписываемся на событие
+            tr1.TakeTime(DateTime.Parse("19.03.2019 06:30:00"));
+            tr1.TakeTime(DateTime.Parse("19.03.2019 08:30:00"));
+
+
+             
+            MethodContainer container = delegate (CTrain x) //определяем переменную делегата и передаём ей delegate - анонимный метод с параметром
+            {
+                Console.WriteLine("\nДанные из анонимного метода: " + x.trainInfo());
+            };                                              // надо ставить ;
+            container(tr1);                                 //вызываем делегат и передаём ему объект
+
+            MethodContainer2 container2 = (CTrain x) => "\nДанные из лямбда-выражения: " + x.getTrainNumber().ToString() + " " + x.getTrainName();
+            Console.WriteLine(container2(tr1));
+            
 
         }
 
@@ -70,8 +85,9 @@ namespace lab3
 
         private static void Tr1_onDeparture() //обработчик события без параметров
         {
-            Console.WriteLine("Поезд в пути");
-            Console.WriteLine(CCargo.cargoInfo()); //вызов статического метода из CCargo
+            Console.WriteLine("Поезд в пути. Перевозит " + CCargo.cargoInfo()); //вызов статического метода из CCargo
         }
+
+        
     }
 }  
