@@ -11,6 +11,7 @@ namespace lab3
         private String name;
         private String type;
         private CCarriage carriage;
+        private static String presence = "Cargo is present";
 
         //constructors
         public CCargo()
@@ -61,6 +62,13 @@ namespace lab3
         public CCarriage getCargoCarriage()
         {
             return this.carriage;
+        }
+
+
+        //статический метод для обработчика событий
+        public static String cargoInfo()
+        {
+            return presence;
         }
 
 

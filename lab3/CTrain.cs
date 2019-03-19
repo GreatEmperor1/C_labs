@@ -8,6 +8,9 @@ namespace lab3
 {
     class CTrain
     {
+        public delegate void MethodContainer();
+        public event EventHandler onArrival;
+        public event Action onDeparture;
         private int trainNumber;
         private String trainName;
         private CCarriage[] trainCarriages;
@@ -67,6 +70,20 @@ namespace lab3
         public CCarriage[] getTrainCarriages()
         {
             return this.trainCarriages;
+        }
+
+        //-----------------------------------------------------------------------------------------------------------------------
+
+        public void TakeTime(DateTime now)
+        {
+            if (now.Hour >= 8)
+            {
+                onDeparture?.Invoke();
+            }
+            else
+            {
+                onArrival?.Invoke(this, null);
+            }
         }
 
     }

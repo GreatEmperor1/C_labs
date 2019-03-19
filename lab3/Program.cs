@@ -10,6 +10,7 @@ namespace lab3
     {
         static void Main(string[] args)
         {
+            #region lab 3 execution
             //грузы
             CCargo cargo1 = new CCargo("Machinegun","light");
             CCargo cargo2 = new CCargo("Tank","Heavy");
@@ -49,8 +50,28 @@ namespace lab3
             CStation station = new CStation("Station1", "Minsk", trains);
 
             station.print();
+            #endregion
 
+            CTrain tr1 = new CTrain();
+            tr1.onDeparture += Tr1_onDeparture; //подписываемся на событие
+            tr1.onArrival += Tr1_onArrival; //подписываемся на событие
+            tr1.TakeTime(DateTime.Parse("03.19.2019 06:30:00"));
+            tr1.TakeTime(DateTime.Parse("03.19.2019 08:30:00"));
 
+        }
+
+        private static void Tr1_onArrival(object sender, EventArgs e) //обработчик события с параметрами
+        {
+            if (sender is CTrain) //безопасное приведение sender к CTrain
+            {
+                Console.WriteLine($"{((CTrain)sender).getTrainName()} находится в депо.");
+            }
+        }
+
+        private static void Tr1_onDeparture() //обработчик события без параметров
+        {
+            Console.WriteLine("Поезд в пути");
+            Console.WriteLine(CCargo.cargoInfo()); //вызов статического метода из CCargo
         }
     }
 }  
