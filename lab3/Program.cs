@@ -56,10 +56,10 @@ namespace lab3
             #endregion
 
             CTrain tr1 = new CTrain();
-            tr1.onDeparture += Tr1_onDeparture; //подписываемся на событие
-            tr1.onArrival += Tr1_onArrival;     //подписываемся на событие
-            tr1.TakeTime(DateTime.Parse("19.03.2019 06:30:00"));
-            tr1.TakeTime(DateTime.Parse("19.03.2019 08:30:00"));
+            tr1.onDeparture += CTrain.Tr1_onDeparture; //подписываемся на событие
+            tr1.onArrival += CTrain.Tr1_onArrival;     //подписываемся на событие
+            tr1.TakeTime(DateTime.Parse("03.19.2019 06:30:00"));
+            tr1.TakeTime(DateTime.Parse("03.19.2019 08:30:00"));
 
 
              
@@ -71,23 +71,16 @@ namespace lab3
 
             MethodContainer2 container2 = (CTrain x) => "\nДанные из лямбда-выражения: " + x.getTrainNumber().ToString() + " " + x.getTrainName();
             Console.WriteLine(container2(tr1));
-            
 
-        }
+            CTrain.MethodContainer3 myDel = new CTrain.MethodContainer3(tr1.infoChanger); 
+            myDel(7, "My train");
+            Console.WriteLine(tr1.trainInfo());
 
-        private static void Tr1_onArrival(object sender, EventArgs e) //обработчик события с параметрами
-        {
-            if (sender is CTrain) //безопасное приведение sender к CTrain
-            {
-                Console.WriteLine($"{((CTrain)sender).getTrainName()} находится в депо.");
-            }
-        }
 
-        private static void Tr1_onDeparture() //обработчик события без параметров
-        {
-            Console.WriteLine("Поезд в пути. Перевозит " + CCargo.cargoInfo()); //вызов статического метода из CCargo
         }
 
         
+
+
     }
 }  

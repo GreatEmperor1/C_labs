@@ -8,9 +8,11 @@ namespace lab3
 {
     class CTrain
     {
-        public delegate String MethodContainer();
+        public delegate void MethodContainer3(int j, string k);
+        public delegate void MethodContainer4(object someObject);
         public event EventHandler onArrival; //событие с параметрами
         public event Action onDeparture;     //событие без параметров
+
         private int trainNumber;
         private String trainName;
         private CCarriage[] trainCarriages;
@@ -91,6 +93,27 @@ namespace lab3
             return this.trainNumber.ToString() + " " + this.trainName;
         }
 
-        
+        public void infoChanger(int j, string k)
+        {
+            this.trainNumber = j;
+            this.trainName = k;
+        }
+
+        //обработчики событий
+        public static void Tr1_onArrival(object sender, EventArgs e) //обработчик события с параметрами
+        {
+            if (sender is CTrain) //безопасное приведение sender к CTrain
+            {
+                Console.WriteLine($"{((CTrain)sender).getTrainName()} находится в депо.");
+            }
+        }
+
+        public static void Tr1_onDeparture() //обработчик события без параметров
+        {
+            Console.WriteLine("Поезд в пути. Перевозит " + CCargo.cargoInfo()); //вызов статического метода из CCargo
+
+        }
+
+
     }
 }
