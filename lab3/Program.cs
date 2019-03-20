@@ -58,8 +58,8 @@ namespace lab3
             CTrain tr1 = new CTrain();
             tr1.onDeparture += CTrain.Tr1_onDeparture; //подписываемся на событие
             tr1.onArrival += CTrain.Tr1_onArrival;     //подписываемся на событие
-            tr1.TakeTime(DateTime.Parse("03.19.2019 06:30:00"));
-            tr1.TakeTime(DateTime.Parse("03.19.2019 08:30:00"));
+            tr1.TakeTime(DateTime.Parse("19.03.2019 06:30:00"));
+            tr1.TakeTime(DateTime.Parse("19.03.2019 08:30:00"));
 
 
              
